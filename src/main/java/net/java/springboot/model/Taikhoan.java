@@ -20,11 +20,12 @@ public class Taikhoan {
 	@Column(name = "MATKHAU", length = 25, nullable = false)
 	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu nhap vao khong hop le")
 	private String MATKHAU;
+	
+	@Column(name = "TRANGTHAI", nullable = false)
+	private boolean TRANGTHAI = true;
 
 	@OneToOne(targetEntity = Nhanvien.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "TK_NV", referencedColumnName = "MANV")
-//	@Column(name = "MANV", length = 10, nullable = false)
-//	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu nhap vao khong hop le")
 	private String MANV;
 	
 	@OneToOne(targetEntity = Chucvu.class, cascade = CascadeType.ALL)
@@ -78,11 +79,17 @@ public class Taikhoan {
 		IDROLE = idrole;
 	}
 
+	public boolean isTRANGTHAI() {
+		return TRANGTHAI;
+	}
+
+	public void setTRANGTHAI(boolean tRANGTHAI) {
+		TRANGTHAI = tRANGTHAI;
+	}
+
 	@Override
 	public String toString() {
-		return "Taikhoan [USERNAME=" + USERNAME + ", MATKHAU=" + MATKHAU + ", MANV=" + MANV + ", IDROLE=" + IDROLE
-				+ ", getUSERNAME()=" + getUSERNAME() + ", getMATKHAU()=" + getMATKHAU() + ", getMANV()=" + getMANV()
-				+ ", getIDROLE()=" + getIDROLE() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+		return "Taikhoan [USERNAME=" + USERNAME + ", MATKHAU=" + MATKHAU + ", TRANGTHAI=" + TRANGTHAI + ", MANV=" + MANV
+				+ ", IDROLE=" + IDROLE + "]";
 	}
 }

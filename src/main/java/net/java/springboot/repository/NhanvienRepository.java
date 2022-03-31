@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NhanvienRepository extends JpaRepository<Nhanvien, String>{
 	//find with email
-	//Nhanvien findByEmail(String email);
+	Nhanvien findByEmail(String email);
 	//find with phone number
-	//Nhanvien findByPhone(String phone);
+	Nhanvien findByPhone(String phone);
 }

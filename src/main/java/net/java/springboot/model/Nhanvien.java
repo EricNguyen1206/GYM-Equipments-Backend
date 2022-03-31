@@ -22,32 +22,33 @@ public class Nhanvien {
 	@Pattern(regexp = "[a-zA-Z]*", message = "FirstName is not valid")
 	private String TEN;
 	
+	// Gioi tinh = true = 1 = nam, Gioi tinh = false = 0 = nu
 	@Column(name = "GIOITINH", nullable = false)
-	private int GIOITINH;
+	private boolean GIOITINH = true;
 
-	@Column(name = "SDT", length = 10, nullable = false)
-	@Pattern(regexp = "0[0-9]{9}", message = "Phone is not valid")
-	private String SDT;
+	@Column(name = "Phone", length = 10, nullable = false)
+	@Pattern(regexp = "0[0-9]{9}", message = "So dien thoai khong hop le")
+	private String phone;
 
-	@Column(name = "EMAIL", length = 50, nullable = true)
-	@Email(message = "Email is not valid")
-	private String EMAIL;
+	@Column(name = "email", length = 50, nullable = false)
+	@Email(message = "email is not valid")
+	private String email;
 
 	public Nhanvien() {
 		super();
 	}
 
 	public Nhanvien(String mANV, @Pattern(regexp = "[a-zA-Z]*", message = "FirstName is not valid") String hO,
-			@Pattern(regexp = "[a-zA-Z]*", message = "FirstName is not valid") String tEN, int gIOITINH,
-			@Pattern(regexp = "0[0-9]{9}", message = "Phone is not valid") String sDT,
-			@Email(message = "Email is not valid") String eMAIL) {
+			@Pattern(regexp = "[a-zA-Z]*", message = "FirstName is not valid") String tEN, boolean gIOITINH,
+			@Pattern(regexp = "0[0-9]{9}", message = "Phone is not valid") String Phone,
+			@Email(message = "email is not valid") String email) {
 		super();
 		MANV = mANV;
 		HO = hO;
 		TEN = tEN;
 		GIOITINH = gIOITINH;
-		SDT = sDT;
-		EMAIL = eMAIL;
+		this.phone = Phone;
+		this.email = email;
 	}
 
 	public String getMANV() {
@@ -74,35 +75,35 @@ public class Nhanvien {
 		TEN = tEN;
 	}
 
-	public int getGIOITINH() {
+	public boolean getGIOITINH() {
 		return GIOITINH;
 	}
 
-	public void setGIOITINH(int gIOITINH) {
+	public void setGIOITINH(boolean gIOITINH) {
 		GIOITINH = gIOITINH;
 	}
 
-	public String getSDT() {
-		return SDT;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setSDT(String sDT) {
-		SDT = sDT;
+	public void setPhone(String Phone) {
+		this.phone = Phone;
 	}
 
-	public String getEMAIL() {
-		return EMAIL;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
 	public String toString() {
-		return "Nhanvien [MANV=" + MANV + ", HO=" + HO + ", TEN=" + TEN + ", GIOITINH=" + GIOITINH + ", SDT=" + SDT
-				+ ", EMAIL=" + EMAIL + ", getMANV()=" + getMANV() + ", getHO()=" + getHO() + ", getTEN()=" + getTEN()
-				+ ", getGIOITINH()=" + getGIOITINH() + ", getSDT()=" + getSDT() + ", getEMAIL()=" + getEMAIL()
+		return "Nhanvien [MANV=" + MANV + ", HO=" + HO + ", TEN=" + TEN + ", GIOITINH=" + GIOITINH + ", Phone=" + phone
+				+ ", email=" + email + ", getMANV()=" + getMANV() + ", getHO()=" + getHO() + ", getTEN()=" + getTEN()
+				+ ", getGIOITINH()=" + getGIOITINH() + ", getPhone()=" + getPhone() + ", getEmail()=" + getEmail()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}

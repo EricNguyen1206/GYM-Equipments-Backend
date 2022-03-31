@@ -9,5 +9,4 @@ public class SpringbootGymwebBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootGymwebBackendApplication.class, args);
 	}
-
 }
