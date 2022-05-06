@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class NhanvienService {
 	@Autowired
-	private NhanvienRepository nhanvienRepository;
+	NhanvienRepository nhanvienRepository;
 	
 	boolean checkInArr(String [] arr, String testStr) {
 		for(String i : arr) {
@@ -33,7 +33,7 @@ public class NhanvienService {
 	}
 	
 	public Nhanvien createNhanvien(Nhanvien nhanvien) throws IllegalArgumentException {
-		Optional<Nhanvien> nhanvienFound = nhanvienRepository.findById(nhanvien.getMANV());
+		Optional<Nhanvien> nhanvienFound = nhanvienRepository.findById(nhanvien.getManv());
 		
 		if(nhanvienFound.isPresent()) {
 			throw new IllegalArgumentException("Nhan vien da ton tai!");
@@ -44,7 +44,7 @@ public class NhanvienService {
 		}
 		
 		if(nhanvienRepository.findByPhone(nhanvien.getPhone()) != null) {
-			throw new IllegalArgumentException("Phone nay da duoc su dung!");
+			throw new IllegalArgumentException("So dien thoai nay da duoc su dung!");
 		}
 		
 		return nhanvienRepository.save(nhanvien);

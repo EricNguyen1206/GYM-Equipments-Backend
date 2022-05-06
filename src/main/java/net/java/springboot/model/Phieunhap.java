@@ -1,11 +1,8 @@
 package net.java.springboot.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,60 +16,46 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "PHIEUNHAP")
 public class Phieunhap {
 	@Id
-	@Column(name = "MAPN", length = 10)
+	@Column(name = "MAPN", length = 5)
 	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String MAPN;
-	
+	private String mapn;
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/mm/yyyy")
-	@Column(name = "NGAYNHAP")
-	private Date NGAYNHAP;
+	@Column(name = "NGAYNHAP", nullable = false)
+	private Date ngaynhap;
+
+	@Column(name = "MATK", length = 20, nullable = false)
+	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu nhap vao khong hop le")
+	private String matk;
 	
-
-	@OneToOne(targetEntity = Taikhoan.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "FK_PHIEUNHAP_REFERENCE_TAIKHOAN", referencedColumnName = "USERNAME")
-//	@Column(name = "MATK", length = 10, nullable = false)
-//	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String MATK;
-
 	public Phieunhap() {
 		super();
 	}
-
-	public Phieunhap(@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String mAPN, Date nGAYNHAP,
-			@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String matk) {
+	public Phieunhap(@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String mapn, Date ngaynhap,
+			@Pattern(regexp = "[a-zA-Z]*", message = "Ky tu nhap vao khong hop le") String matk) {
 		super();
-		MAPN = mAPN;
-		NGAYNHAP = nGAYNHAP;
-		MATK = matk;
+		this.mapn = mapn;
+		this.ngaynhap = ngaynhap;
+		this.matk = matk;
 	}
 
-	public String getMAPN() {
-		return MAPN;
+	public String getMapn() {
+		return mapn;
 	}
-
-	public void setMAPN(String mAPN) {
-		MAPN = mAPN;
+	public void setMapn(String mapn) {
+		this.mapn = mapn;
 	}
-
-	public Date getNGAYNHAP() {
-		return NGAYNHAP;
+	public Date getNgaynhap() {
+		return ngaynhap;
 	}
-
-	public void setNGAYNHAP(Date nGAYNHAP) {
-		NGAYNHAP = nGAYNHAP;
+	public void setNgaynhap(Date ngaynhap) {
+		this.ngaynhap = ngaynhap;
 	}
-
-	public String getMATK() {
-		return MATK;
+	public String getMatk() {
+		return matk;
 	}
-
-	public void setMATK(String matk) {
-		MATK = matk;
-	}
-
-	@Override
-	public String toString() {
-		return "Phieunhap [MAPN=" + MAPN + ", NGAYNHAP=" + NGAYNHAP + ", MATK=" + MATK +"]";
+	public void setMatk(String matk) {
+		this.matk = matk;
 	}
 }

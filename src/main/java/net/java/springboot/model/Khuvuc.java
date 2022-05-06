@@ -1,11 +1,8 @@
 package net.java.springboot.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
@@ -13,56 +10,55 @@ import javax.validation.constraints.Pattern;
 @Table(name = "KHUVUC")
 public class Khuvuc {
 	@Id
-	@Column(name = "MAKV", length = 10, nullable = false)
+	@Column(name = "MAKV", length = 4, nullable = false)
 	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String MAKV;
+	private String makv;
 	
 	@Column(name = "TENKV", length = 20, nullable = false)
 	@Pattern(regexp = "[a-zA-Z ]*", message = "Ten khu vuc khong hop le")
-	private String TENKV;
+	private String tenkv;
 	
-	@OneToOne(targetEntity = Taikhoan.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "FK_KHUVUC_REFERENCE_TAIKHOAN", referencedColumnName = "USERNAME")
-//	@Column(name = "MANV", length = 10, nullable = false)
-//	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String MATK;
-	//Default Constructor
+	@Column(name = "MATK", length = 20)
+	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
+	private String matk;
+	
+	// Constructor
 	public Khuvuc() {
 		super();
 	}
-	//Constructor
-	public Khuvuc(String makv, String tenkv, String matk) {
+
+	public Khuvuc(@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String makv,
+			@Pattern(regexp = "[a-zA-Z ]*", message = "Ten khu vuc khong hop le") String tenkv,
+			@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String matk) {
 		super();
-		MAKV = makv;
-		TENKV = tenkv;
-		MATK = matk;
+		this.makv = makv;
+		this.tenkv = tenkv;
+		this.matk = matk;
 	}
 
-	public String getMAKV() {
-		return MAKV;
+	public String getMakv() {
+		return makv;
 	}
 
-	public void setMAKV(String mAKV) {
-		MAKV = mAKV;
+	public void setMakv(String makv) {
+		this.makv = makv;
 	}
 
-	public String getTENKV() {
-		return TENKV;
+	public String getTenkv() {
+		return tenkv;
 	}
 
-	public void setTENKV(String tENKV) {
-		TENKV = tENKV;
+	public void setTenkv(String tenkv) {
+		this.tenkv = tenkv;
 	}
 
-	public String getMATK() {
-		return MATK;
+	public String getMatk() {
+		return matk;
 	}
 
-	public void setMANV(String matk) {
-		MATK = matk;
+	public void setMatk(String matk) {
+		this.matk = matk;
 	}
-	@Override
-	public String toString() {
-		return "Khuvuc [MAKV=" + MAKV + ", TENKV=" + TENKV + ", MATK=" + MATK + "]";
-	}
+
+	
 }

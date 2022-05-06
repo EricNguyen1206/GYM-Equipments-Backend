@@ -2,76 +2,68 @@ package net.java.springboot.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "THIETBI")
 public class Thietbi {
 	@Id
-	@Column(name = "MATB", length = 10, nullable = false)
-	private String maTb;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(name = "MAPN")
+	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
+	private String mapn;
+	@Column(name = "MALTB")
+	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
+	private String maltb;
+	@Column(name = "MAKV")
+	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
+	private String makv;
+	@Column(name = "TINHTRANGTB")
+	private int tinhtrangTb;
 	
-	@Column(name = "TENTB", length = 20, nullable = false)
-	private String tenTb;
-	
-	@Column(name = "TONGSOLUON", nullable = false)
-	private int tongSoLuong;
-	
-	@Column(name = "CHITIET", length = 100, nullable = false)
-	private String chiTiet;
-	
-	// Default Constructor
 	public Thietbi() {
 		super();
 	}
-	
-	// Default Constructor
-	public Thietbi(String maTb, String tenTb, int tongSoLuong, String chiTiet) {
+	public Thietbi(@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String mapn,
+			@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String maltb,
+			@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String makv, int tinhtrangTb) {
 		super();
-		this.maTb = maTb;
-		this.tenTb = tenTb;
-		this.tongSoLuong = tongSoLuong;
-		this.chiTiet = chiTiet;
+		this.mapn = mapn;
+		this.maltb = maltb;
+		this.makv = makv;
+		this.tinhtrangTb = tinhtrangTb;
 	}
 
-	public Thietbi(Thietbi tb) {
-		super();
-		this.maTb = tb.getMaTb();
-		this.tenTb = tb.getTenTb();
-		this.tongSoLuong = tb.getTongSoLuong();
-		this.chiTiet = tb.getChiTiet();
+	public int getId() {
+		return id;
 	}
-
-	public String getMaTb() {
-		return maTb;
+	public String getMapn() {
+		return mapn;
 	}
-	public void setMaTb(String maTb) {
-		this.maTb = maTb;
+	public void setMapn(String mapn) {
+		this.mapn = mapn;
 	}
-	public String getTenTb() {
-		return tenTb;
+	public String getMaltb() {
+		return maltb;
 	}
-	public void setTenTb(String tenTb) {
-		this.tenTb = tenTb;
+	public void setMaltb(String maltb) {
+		this.maltb = maltb;
 	}
-	public int getTongSoLuong() {
-		return tongSoLuong;
+	public String getMakv() {
+		return makv;
 	}
-	public void setTongSoLuong(int tongSoLuong) {
-		this.tongSoLuong = tongSoLuong;
+	public void setMakv(String makv) {
+		this.makv = makv;
 	}
-	public String getChiTiet() {
-		return chiTiet;
+	public int getTinhtrangTb() {
+		return tinhtrangTb;
 	}
-	public void setChiTiet(String chiTiet) {
-		this.chiTiet = chiTiet;
-	}
-	@Override
-	public String toString() {
-		return "Thietbi [maTb=" + maTb + ", tenTb=" + tenTb + ", tongSoLuong=" + tongSoLuong + ", chiTiet=" + chiTiet
-				+ ", getMaTb()=" + getMaTb() + ", getTenTb()=" + getTenTb() + ", getTongSoLuong()=" + getTongSoLuong()
-				+ ", getChiTiet()=" + getChiTiet() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+	public void setTinhtrangTb(int tinhtrangTb) {
+		this.tinhtrangTb = tinhtrangTb;
 	}
 }

@@ -3,7 +3,6 @@ package net.java.springboot.controller;
 import net.java.springboot.model.Nhanvien;
 import net.java.springboot.service.NhanvienService;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:5502")
+@CrossOrigin(origins = "http://localhost:5500")
 @RestController
 @RequestMapping("/api/v1/")
 public class NhanvienController {
@@ -37,7 +36,7 @@ public class NhanvienController {
 	
 	// Add Nhanvien to repository
 	@PostMapping("/nhanvien")
-	public Nhanvien createNhanvien(@Validated @RequestBody Nhanvien nhanvien) {
+	public Nhanvien createNhanvien(@RequestBody Nhanvien nhanvien) {
 		return nhanvienService.createNhanvien(nhanvien);
 	}
 }

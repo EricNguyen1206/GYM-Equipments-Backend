@@ -11,84 +11,84 @@ import javax.validation.constraints.Pattern;
 @Table(name = "NHANVIEN")
 public class Nhanvien {
 	@Id
-	@Column(name = "MANV", length = 10, nullable = false)
-	private String MANV;
+	@Column(name = "MANV", length = 4, nullable = false)
+	private String manv;
 	
 	@Column(name = "HO", length = 25, nullable = false)
-	@Pattern(regexp = "[a-zA-Z]*", message = "FirstName is not valid")
-	private String HO;
+	@Pattern(regexp = "[a-zA-Z\s]*", message = "Ho khong hop le!")
+	private String ho;
 	
 	@Column(name = "TEN", length = 10, nullable = false)
-	@Pattern(regexp = "[a-zA-Z]*", message = "FirstName is not valid")
-	private String TEN;
+	@Pattern(regexp = "[a-zA-Z]*", message = "Ten khong hop le!")
+	private String ten;
 	
 	// Gioi tinh = true = 1 = nam, Gioi tinh = false = 0 = nu
 	@Column(name = "GIOITINH", nullable = false)
-	private boolean GIOITINH = true;
+	private boolean gioitinh = true;
 
-	@Column(name = "Phone", length = 10, nullable = false)
-	@Pattern(regexp = "0[0-9]{9}", message = "So dien thoai khong hop le")
+	@Column(name = "SDT", length = 10, nullable = false)
+	@Pattern(regexp = "0[0-9]{9}", message = "So dien thoai khong hop le!")
 	private String phone;
 
-	@Column(name = "email", length = 50, nullable = false)
-	@Email(message = "email is not valid")
+	@Column(name = "EMAIL", length = 50, nullable = false)
+	@Email(message = "email khong hop le!")
 	private String email;
 
 	public Nhanvien() {
 		super();
 	}
 
-	public Nhanvien(String mANV, @Pattern(regexp = "[a-zA-Z]*", message = "FirstName is not valid") String hO,
-			@Pattern(regexp = "[a-zA-Z]*", message = "FirstName is not valid") String tEN, boolean gIOITINH,
-			@Pattern(regexp = "0[0-9]{9}", message = "Phone is not valid") String Phone,
-			@Email(message = "email is not valid") String email) {
+	public Nhanvien(String manv, @Pattern(regexp = "[a-zA-Z]*", message = "Ho khong hop le!") String ho,
+			@Pattern(regexp = "[a-zA-Z]*", message = "Ten khong hop le!") String ten, boolean gioitinh,
+			@Pattern(regexp = "0[0-9]{9}", message = "So dien thoai khong hop le!") String phone,
+			@Email(message = "email khong hop le!") String email) {
 		super();
-		MANV = mANV;
-		HO = hO;
-		TEN = tEN;
-		GIOITINH = gIOITINH;
-		this.phone = Phone;
+		this.manv = manv;
+		this.ho = ho;
+		this.ten = ten;
+		this.gioitinh = gioitinh;
+		this.phone = phone;
 		this.email = email;
 	}
 
-	public String getMANV() {
-		return MANV;
+	public String getManv() {
+		return manv;
 	}
 
-	public void setMANV(String mANV) {
-		MANV = mANV;
+	public void setManv(String manv) {
+		this.manv = manv;
 	}
 
-	public String getHO() {
-		return HO;
+	public String getHo() {
+		return ho;
 	}
 
-	public void setHO(String hO) {
-		HO = hO;
+	public void setHo(String ho) {
+		this.ho = ho;
 	}
 
-	public String getTEN() {
-		return TEN;
+	public String getTen() {
+		return ten;
 	}
 
-	public void setTEN(String tEN) {
-		TEN = tEN;
+	public void setTen(String ten) {
+		this.ten = ten;
 	}
 
-	public boolean getGIOITINH() {
-		return GIOITINH;
+	public boolean isGioitinh() {
+		return gioitinh;
 	}
 
-	public void setGIOITINH(boolean gIOITINH) {
-		GIOITINH = gIOITINH;
+	public void setGioitinh(boolean gioitinh) {
+		this.gioitinh = gioitinh;
 	}
 
 	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String Phone) {
-		this.phone = Phone;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getEmail() {
@@ -99,12 +99,5 @@ public class Nhanvien {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Nhanvien [MANV=" + MANV + ", HO=" + HO + ", TEN=" + TEN + ", GIOITINH=" + GIOITINH + ", Phone=" + phone
-				+ ", email=" + email + ", getMANV()=" + getMANV() + ", getHO()=" + getHO() + ", getTEN()=" + getTEN()
-				+ ", getGIOITINH()=" + getGIOITINH() + ", getPhone()=" + getPhone() + ", getEmail()=" + getEmail()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}
+	
 }

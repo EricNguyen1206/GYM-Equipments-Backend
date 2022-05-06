@@ -1,11 +1,8 @@
 package net.java.springboot.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
@@ -13,83 +10,78 @@ import javax.validation.constraints.Pattern;
 @Table(name = "TAIKHOAN")
 public class Taikhoan {
 	@Id
-	@Column(name = "USERNAME", length = 10, nullable = false)
-	@Pattern(regexp = "[a-zA-Z]*", message = "Ky tu nhap vao khong hop le")
-	private String USERNAME;
-
-	@Column(name = "MATKHAU", length = 25, nullable = false)
+	@Column(name = "USERNAME", length = 20, nullable = false)
 	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu nhap vao khong hop le")
-	private String MATKHAU;
+	private String username;
+
+	@Column(name = "MATKHAU", length = 20, nullable = false)
+	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu nhap vao khong hop le")
+	private String matkhau;
 	
 	@Column(name = "TRANGTHAI", nullable = false)
-	private boolean TRANGTHAI = true;
+	private boolean trangthai = true;
 
-	@OneToOne(targetEntity = Nhanvien.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "TK_NV", referencedColumnName = "MANV")
-	private String MANV;
+	@Column(name = "MANV", length = 4, nullable = false)
+	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu nhap vao khong hop le")
+	private String manv;
 	
-	@OneToOne(targetEntity = Chucvu.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "IDROLE", referencedColumnName = "IDROLE")
-//	@Column(name = "IDROLE", length = 10, nullable = false)
-	private int IDROLE;
+	@Column(name = "MAKV", length = 4)
+	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu nhap vao khong hop le")
+	private String makv;
+	
+	@Column(name = "IDROLE", nullable = false)
+	private int idrole = 3;
 
 	public Taikhoan() {
 		super();
 	}
 
-	public Taikhoan(@Pattern(regexp = "[a-zA-Z]*", message = "Ky tu nhap vao khong hop le") String username,
-			@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu nhap vao khong hop le") String matkhau,
-			@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu nhap vao khong hop le") String manv, int idrole) {
-		super();
-		USERNAME = username;
-		MATKHAU = matkhau;
-		MANV = manv;
-		IDROLE = idrole;
+	public String getUsername() {
+		return username;
 	}
 
-	public String getUSERNAME() {
-		return USERNAME;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public void setUSERNAME(String username) {
-		USERNAME = username;
+	public String getMatkhau() {
+		return matkhau;
 	}
 
-	public String getMATKHAU() {
-		return MATKHAU;
+	public void setMatkhau(String matkhau) {
+		this.matkhau = matkhau;
 	}
 
-	public void setMATKHAU(String matkhau) {
-		MATKHAU = matkhau;
+	public boolean isTrangthai() {
+		return trangthai;
 	}
 
-	public String getMANV() {
-		return MANV;
+	public void setTrangthai(boolean trangthai) {
+		this.trangthai = trangthai;
 	}
 
-	public void setMANV(String manv) {
-		MANV = manv;
+	public String getManv() {
+		return manv;
 	}
 
-	public int getIDROLE() {
-		return IDROLE;
+	public void setManv(String manv) {
+		this.manv = manv;
 	}
 
-	public void setIDROLE(int idrole) {
-		IDROLE = idrole;
+	public String getMakv() {
+		return makv;
 	}
 
-	public boolean isTRANGTHAI() {
-		return TRANGTHAI;
+	public void setMakv(String makv) {
+		this.makv = makv;
 	}
 
-	public void setTRANGTHAI(boolean tRANGTHAI) {
-		TRANGTHAI = tRANGTHAI;
+	public int getIdrole() {
+		return idrole;
 	}
 
-	@Override
-	public String toString() {
-		return "Taikhoan [USERNAME=" + USERNAME + ", MATKHAU=" + MATKHAU + ", TRANGTHAI=" + TRANGTHAI + ", MANV=" + MANV
-				+ ", IDROLE=" + IDROLE + "]";
+	public void setIdrole(int idrole) {
+		this.idrole = idrole;
 	}
+
 }
