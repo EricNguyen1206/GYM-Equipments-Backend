@@ -1,7 +1,5 @@
 package net.java.springboot.controller;
 
-import net.java.springboot.model.Nhanvien;
-import net.java.springboot.service.NhanvienService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,31 +13,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.java.springboot.model.Khuvuc;
+import net.java.springboot.service.KhuvucService;
+
 @CrossOrigin(origins = "http://localhost:5500")
 @RestController
 @RequestMapping("/api/v1/")
-public class NhanvienController {
+public class KhuvucController {
 	@Autowired
-	private NhanvienService service;
+	KhuvucService service;
 	
-	@GetMapping("/nhanvien")
-	public List<Nhanvien> getAll() {
+	@GetMapping("/khuvuc")
+	public List<Khuvuc> getAll() {
 		return service.getAll();
 	}
 	
-	@GetMapping("/nhanvien/{id}")
-	public ResponseEntity<Nhanvien> getById(@PathVariable String id) {
-		return ResponseEntity.ok(service.getById(id));
+	@GetMapping("/khuvuc/{id}")
+	public Khuvuc getById(@PathVariable String id) {
+		return service.getById(id);
 	}
 	
-	@PostMapping("/nhanvien")
-	public Nhanvien create(@RequestBody Nhanvien nv) {
-		return service.create(nv);
+	@PostMapping("/khuvuc")
+	public Khuvuc create(@RequestBody Khuvuc kv) {
+		return service.create(kv);
 	}
 	
-	@PutMapping("/nhanvien/{id}")
-	public ResponseEntity<Nhanvien> update(@PathVariable String id, @RequestBody Nhanvien nv) {
-		Nhanvien updated = service.update(id, nv);
-		return ResponseEntity.ok(updated);
+	@PutMapping("/khuvuc/{id}")
+	public ResponseEntity<Khuvuc> update(@PathVariable String id, @RequestBody Khuvuc kv) {
+		Khuvuc res = service.update(id, kv);
+		return ResponseEntity.ok(res);
 	}
 }

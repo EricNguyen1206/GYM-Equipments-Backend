@@ -22,7 +22,7 @@ public class Thietbi {
 	private String maltb;
 	@Column(name = "MAKV")
 	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String makv;
+	private String makv = "KHO1";
 	@Column(name = "TINHTRANGTB")
 	private int tinhtrangTb;
 	
