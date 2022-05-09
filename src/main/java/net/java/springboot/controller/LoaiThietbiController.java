@@ -1,7 +1,5 @@
 package net.java.springboot.controller;
 
-import net.java.springboot.model.Nhanvien;
-import net.java.springboot.service.NhanvienService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,31 +13,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.java.springboot.model.LoaiThietbi;
+import net.java.springboot.service.LoaiThietbiService;
+
 @CrossOrigin(origins = "http://localhost:5500")
 @RestController
 @RequestMapping("/api/v1/")
-public class NhanvienController {
+public class LoaiThietbiController {
 	@Autowired
-	private NhanvienService service;
+	LoaiThietbiService service;
 	
-	@GetMapping("/nhanvien")
-	public List<Nhanvien> getAll() {
+	@GetMapping("/loaithietbi")
+	public List<LoaiThietbi> getAll() {
 		return service.getAll();
 	}
 	
-	@GetMapping("/nhanvien/{id}")
-	public ResponseEntity<Nhanvien> getById(@PathVariable String id) {
-		return ResponseEntity.ok(service.getById(id));
+	@GetMapping("/loaithietbi/{id}")
+	public LoaiThietbi getById(@PathVariable String id) {
+		return service.getById(id);
 	}
 	
-	@PostMapping("/nhanvien")
-	public Nhanvien create(@RequestBody Nhanvien nv) {
-		return service.create(nv);
+	@PostMapping("/loaithietbi")
+	public LoaiThietbi create(@RequestBody LoaiThietbi ltb) {
+		return service.create(ltb);
 	}
 	
-	@PutMapping("/nhanvien/{id}")
-	public ResponseEntity<Nhanvien> update(@PathVariable String id, @RequestBody Nhanvien nv) {
-		Nhanvien updated = service.update(id, nv);
+	@PutMapping("/loaithietbi/{id}")
+	public ResponseEntity<LoaiThietbi> update(@PathVariable String id, @RequestBody LoaiThietbi ltb) {
+		LoaiThietbi updated = service.update(id, ltb);
 		return ResponseEntity.ok(updated);
 	}
 }

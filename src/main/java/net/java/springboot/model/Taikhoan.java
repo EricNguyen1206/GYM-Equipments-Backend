@@ -52,7 +52,7 @@ public class Taikhoan {
 		this.matkhau = matkhau;
 	}
 
-	public boolean isTrangthai() {
+	public boolean getTrangthai() {
 		return trangthai;
 	}
 
@@ -82,6 +82,12 @@ public class Taikhoan {
 
 	public void setIdrole(int idrole) {
 		this.idrole = idrole;
+	}
+
+	@Override
+	public String toString() {
+		return "Taikhoan [username=" + username + ", matkhau=" + matkhau + ", trangthai=" + trangthai + ", manv=" + manv
+				+ ", makv=" + makv + ", idrole=" + idrole + "]";
 	}
 
 }
