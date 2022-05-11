@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "CHITIETPN")
+@IdClass(ChitietPNId.class)
 public class ChitietPN implements Serializable {
 	@Id
 	@Column(name = "MAPN", length = 5)
