@@ -14,7 +14,7 @@ public class ChitietPNId implements Serializable {
 		this.mapn = mapn;
 		this.maltb = maltb;
 	}
-	 @Override
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

@@ -66,4 +66,10 @@ public class Thietbi {
 	public void setTinhtrangTb(int tinhtrangTb) {
 		this.tinhtrangTb = tinhtrangTb;
 	}
+	@Override
+	public String toString() {
+		return "Thietbi [id=" + id + ", mapn=" + mapn + ", maltb=" + maltb + ", makv=" + makv + ", tinhtrangTb="
+				+ tinhtrangTb + "]";
+	}
+	
 }
