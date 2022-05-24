@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class ChitietPSDId implements Serializable {
-	private String mapsd;
+	private int mapsd;
 	private int matb;
 	
-	public String getMapsd() {
+	public int getMapsd() {
 		return mapsd;
 	}
 	public int getMatb() {
@@ -19,7 +19,7 @@ public class ChitietPSDId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChitietPSDId chitietPSDId = (ChitietPSDId) o;
-        return mapsd.equals(chitietPSDId.getMapsd()) &&
+        return mapsd==chitietPSDId.getMapsd() &&
         		matb == chitietPSDId.getMatb();
     }
 	

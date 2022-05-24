@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -16,9 +18,9 @@ import javax.validation.constraints.Pattern;
 @Table(name = "PHIEUSUDUNG")
 public class Phieusudung {
 	@Id
-	@Column(name = "MAPSD", length = 5)
-	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String mapsd;
+	@Column(name = "MAPSD")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int mapsd;
 	
 	//Username Tai khoan nhan vien lay thiet bi
 	@Column(name = "MATKNV", length = 20)
@@ -37,35 +39,35 @@ public class Phieusudung {
 	public Phieusudung() {
 		super();
 	}
-	public Phieusudung(@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String mapsd,
-			@Pattern(regexp = "[a-zA-Z]*", message = "Ky tu nhap vao khong hop le") String matknv,
-			@Pattern(regexp = "[a-zA-Z]*", message = "Ky tu nhap vao khong hop le") String matktk) {
-		super();
-		this.mapsd = mapsd;
-		this.matknv = matknv;
-		this.matktk = matktk;
-	}
-	public String getMapsd() {
+
+	public int getMapsd() {
 		return mapsd;
 	}
-	public void setMapsd(String mapsd) {
+
+	public void setMapsd(int mapsd) {
 		this.mapsd = mapsd;
 	}
+
 	public String getMatknv() {
 		return matknv;
 	}
+
 	public void setMatknv(String matknv) {
 		this.matknv = matknv;
 	}
+
 	public String getMatktk() {
 		return matktk;
 	}
+
 	public void setMatktk(String matktk) {
 		this.matktk = matktk;
 	}
+
 	public List<ChitietPSD> getChitietPSD() {
 		return chitietPSD;
 	}
+
 	public void setChitietPSD(List<ChitietPSD> chitietPSD) {
 		this.chitietPSD = chitietPSD;
 	}

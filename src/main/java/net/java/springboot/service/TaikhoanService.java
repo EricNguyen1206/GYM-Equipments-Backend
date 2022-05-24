@@ -45,7 +45,7 @@ public class TaikhoanService {
 		if(!taikhoanFound.getManv().equals(newTaikhoan.getManv())) {
 			throw new IllegalArgumentException("Lỗi: Không thay đổi nhân viên sở hữu tài khoản!");
 		}
-		taikhoanFound.setIdrole(newTaikhoan.getIdrole() != 0 ? newTaikhoan.getIdrole() : taikhoanFound.getIdrole());
+		taikhoanFound.setIdrole(newTaikhoan.getIdrole() != null ? newTaikhoan.getIdrole() : taikhoanFound.getIdrole());
 		taikhoanFound.setMakv(newTaikhoan.getMakv() != null ? newTaikhoan.getMakv() : taikhoanFound.getMakv());
 		taikhoanFound.setMatkhau(newTaikhoan.getMatkhau() != null ? newTaikhoan.getMatkhau() : taikhoanFound.getMatkhau());
 		taikhoanFound.setTrangthai(newTaikhoan.getTrangthai());

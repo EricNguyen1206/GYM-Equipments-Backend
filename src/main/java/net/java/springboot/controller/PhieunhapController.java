@@ -30,11 +30,13 @@ public class PhieunhapController {
 	}
 	
 	@GetMapping("/phieunhap/{id}")
-	public ResponseEntity<Phieunhap> getById(@PathVariable String id) {
+	public ResponseEntity<Phieunhap> getById(@PathVariable int id) {
 		return ResponseEntity.ok(service.getById(id));
 	}
+	
 	@PostMapping("/phieunhap")
-	public Phieunhap create(@RequestBody Phieunhap pn) {
-		return service.create(pn);
+	public ResponseEntity<String> create(@RequestBody Phieunhap pn) {
+		String res = service.create(pn);
+		return ResponseEntity.ok().body(res);
 	}
 }

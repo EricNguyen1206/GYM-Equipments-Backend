@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -21,9 +23,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "PHIEUTHANHLY")
 public class Phieuthanhly {
 	@Id
-	@Column(name = "MAPTL", length = 5)
-	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String maptl;
+	@Column(name = "MAPTL")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int maptl;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/mm/yyyy")
@@ -41,35 +43,37 @@ public class Phieuthanhly {
 	public Phieuthanhly() {
 		super();
 	}
-	public Phieuthanhly(@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String maptl,
-			Date ngaythanhly, @Pattern(regexp = "[a-zA-Z]*", message = "Ky tu nhap vao khong hop le") String matk) {
-		super();
-		this.maptl = maptl;
-		this.ngaythanhly = ngaythanhly;
-		this.matk = matk;
-	}
-	public String getMaptl() {
+
+	public int getMaptl() {
 		return maptl;
 	}
-	public void setMaptl(String maptl) {
+
+	public void setMaptl(int maptl) {
 		this.maptl = maptl;
 	}
+
 	public Date getNgaythanhly() {
 		return ngaythanhly;
 	}
+
 	public void setNgaythanhly(Date ngaythanhly) {
 		this.ngaythanhly = ngaythanhly;
 	}
+
 	public String getMatk() {
 		return matk;
 	}
+
 	public void setMatk(String matk) {
 		this.matk = matk;
 	}
+
 	public List<ChitietPTL> getChitietPTL() {
 		return chitietPTL;
 	}
+
 	public void setChitietPTL(List<ChitietPTL> chitietPTL) {
 		this.chitietPTL = chitietPTL;
 	}
+	
 }

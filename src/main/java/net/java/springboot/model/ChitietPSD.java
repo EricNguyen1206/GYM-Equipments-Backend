@@ -22,9 +22,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @IdClass(ChitietPSDId.class)
 public class ChitietPSD implements Serializable {
 	@Id
-	@Column(name = "MAPSD", length = 5)
-	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String mapsd;
+	@Column(name = "MAPSD")
+	private int mapsd;
 
 	@Id
 	@Column(name = "MATB", nullable = false)
@@ -43,28 +42,15 @@ public class ChitietPSD implements Serializable {
 	public ChitietPSD() {
 		super();
 	}
-
-	public ChitietPSD(@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String mapsd, int matb,
-			Date ngaylay, Date ngaytra) {
-		super();
-		this.mapsd = mapsd;
-		this.matb = matb;
-		this.ngaylay = ngaylay;
-		this.ngaytra = ngaytra;
-	}
-
-	public String getMapsd() {
+	public int getMapsd() {
 		return mapsd;
 	}
-
-	public void setMapsd(String mapsd) {
+	public void setMapsd(int mapsd) {
 		this.mapsd = mapsd;
 	}
-
 	public int getMatb() {
 		return matb;
 	}
-
 	public void setMatb(int matb) {
 		this.matb = matb;
 	}

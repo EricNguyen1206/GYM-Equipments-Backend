@@ -11,7 +11,7 @@ import net.java.springboot.model.ChitietPTL;
 import net.java.springboot.model.Phieuthanhly;
 import net.java.springboot.repository.ChitietPTLRepository;
 import net.java.springboot.repository.PhieuthanhlyRepository;
-
+import java.lang.Integer;
 @Service
 public class PhieuthanhlyService {
 	@Autowired
@@ -24,24 +24,23 @@ public class PhieuthanhlyService {
 		return ptlRepository.findAll();
 	}
 	
-	public Phieuthanhly getById(String id) throws ResourceNotFoundException {
+	public Phieuthanhly getById(int id) throws ResourceNotFoundException {
 		Phieuthanhly ptlFound = ptlRepository.findById(id)
 				.orElseThrow(()-> new ResourceNotFoundException("Không tìm thấy Phiếu nhập có mã:"+id));
 		return ptlFound;
 	}
 	
-	public Phieuthanhly create(Phieuthanhly ptl) throws ResourceNotFoundException, IllegalArgumentException {
+	public String create(Phieuthanhly ptl) throws ResourceNotFoundException, IllegalArgumentException {
 		Optional<Phieuthanhly> ptlFound = ptlRepository.findById(ptl.getMaptl());
 		if(ptlFound.isPresent()) {
 			throw new IllegalArgumentException("Mã phiếu nhập này đã tồn tại");
 		}
-//		SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
-//		Date date = new Date();
-		Phieuthanhly res = ptlRepository.save(ptl);
+		int id = ptlRepository.taoPhieuthanhly();
 		List<ChitietPTL> chitietPtl = ptl.getChitietPTL();
 		for(int i=0; i<chitietPtl.size(); ++i) {
+			chitietPtl.get(i).setMaptl(id);
 			chitietPtlRepository.save(chitietPtl.get(i));
 		}
-		return res;
+		return "Đã thanh lý!";
 	}
 }

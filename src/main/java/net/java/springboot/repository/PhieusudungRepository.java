@@ -8,10 +8,13 @@ import org.springframework.stereotype.Repository;
 import net.java.springboot.model.Phieusudung;
 import net.java.springboot.model.Thietbi;
 @Repository
-public interface PhieusudungRepository extends JpaRepository<Phieusudung, String> {
+public interface PhieusudungRepository extends JpaRepository<Phieusudung, Integer> {
+	@Query(value="exec themPhieusudung :matknv", nativeQuery = true)
+	 public int taoPhieuthanhly(@Param("matknv") String matknv);
+	
 	 @Query(value="exec duyetPhieusudung :mapsd", nativeQuery = true)
-	 public Phieusudung duyetPhieusudung(@Param("mapsd") String mapsd);
+	 public Phieusudung duyetPhieusudung(@Param("mapsd") int mapsd);
 	 
 	 @Query(value="exec traThietbi :mapsd, :matb", nativeQuery = true)
-	 public Thietbi traThietbi(@Param("mapsd") String mapsd, @Param("matb") int matb);
+	 public Thietbi traThietbi(@Param("mapsd") int mapsd, @Param("matb") int matb);
 }

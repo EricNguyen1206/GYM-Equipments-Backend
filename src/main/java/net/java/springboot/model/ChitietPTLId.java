@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class ChitietPTLId implements Serializable  {
-	private String maptl;
+	private int maptl;
 	private int matb;
 	
 	public ChitietPTLId() {
 		super();
 	}
-	public ChitietPTLId(String maptl, int matb) {
+	public ChitietPTLId(int maptl, int matb) {
 		super();
 		this.maptl = maptl;
 		this.matb = matb;
@@ -20,11 +20,11 @@ public class ChitietPTLId implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChitietPTLId chitietPTLId = (ChitietPTLId) o;
-        return maptl.equals(chitietPTLId.getMaptl()) &&
+        return maptl==chitietPTLId.getMaptl() &&
         		matb == chitietPTLId.getMatb();
     }
 	
-	public String getMaptl() {
+	public int getMaptl() {
 		return maptl;
 	}
 	public int getMatb() {

@@ -3,6 +3,7 @@ package net.java.springboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,12 +28,13 @@ public class PhieuthanhlyController {
 	}
 	
 	@GetMapping("/phieuthanhly/{id}")
-	public Phieuthanhly getById(@PathVariable String id) {
+	public Phieuthanhly getById(@PathVariable int id) {
 		return service.getById(id);
 	}
 	
 	@PostMapping("/phieuthanhly")
-	public Phieuthanhly create(@RequestBody Phieuthanhly psd) {
-		return service.create(psd);
+	public ResponseEntity<String> create(@RequestBody Phieuthanhly ptl) {
+		String res = service.create(ptl);
+		return ResponseEntity.ok().body(res);
 	}
 }

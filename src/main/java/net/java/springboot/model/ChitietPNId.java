@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class ChitietPNId implements Serializable {
-	private String mapn;
+	private int mapn;
 	private String maltb;
 	public ChitietPNId() {
 		super();
 	}
-	public ChitietPNId(String mapn, String maltb) {
+	public ChitietPNId(int mapn, String maltb) {
 		super();
 		this.mapn = mapn;
 		this.maltb = maltb;
@@ -19,10 +19,10 @@ public class ChitietPNId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChitietPNId chitietPNId = (ChitietPNId) o;
-        return mapn.equals(chitietPNId.getMapn()) &&
+        return mapn==chitietPNId.getMapn() &&
         		maltb.equals(chitietPNId.getMaltb());
     }
-	public String getMapn() {
+	public int getMapn() {
 		return mapn;
 	}
 	public String getMaltb() {

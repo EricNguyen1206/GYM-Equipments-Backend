@@ -15,8 +15,7 @@ public class Thietbi {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "MAPN")
-	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String mapn;
+	private int mapn;
 	@Column(name = "MALTB")
 	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
 	private String maltb;
@@ -24,28 +23,21 @@ public class Thietbi {
 	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
 	private String makv = "KHO1";
 	@Column(name = "TINHTRANGTB")
-	private int tinhtrangTb;
+	private String tinhtrangTb;
 	
 	public Thietbi() {
 		super();
 	}
-	public Thietbi(@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String mapn,
-			@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String maltb,
-			@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String makv, int tinhtrangTb) {
-		super();
-		this.mapn = mapn;
-		this.maltb = maltb;
-		this.makv = makv;
-		this.tinhtrangTb = tinhtrangTb;
-	}
-
 	public int getId() {
 		return id;
 	}
-	public String getMapn() {
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getMapn() {
 		return mapn;
 	}
-	public void setMapn(String mapn) {
+	public void setMapn(int mapn) {
 		this.mapn = mapn;
 	}
 	public String getMaltb() {
@@ -60,16 +52,10 @@ public class Thietbi {
 	public void setMakv(String makv) {
 		this.makv = makv;
 	}
-	public int getTinhtrangTb() {
+	public String getTinhtrangTb() {
 		return tinhtrangTb;
 	}
-	public void setTinhtrangTb(int tinhtrangTb) {
+	public void setTinhtrangTb(String tinhtrangTb) {
 		this.tinhtrangTb = tinhtrangTb;
 	}
-	@Override
-	public String toString() {
-		return "Thietbi [id=" + id + ", mapn=" + mapn + ", maltb=" + maltb + ", makv=" + makv + ", tinhtrangTb="
-				+ tinhtrangTb + "]";
-	}
-	
 }

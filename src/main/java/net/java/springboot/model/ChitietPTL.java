@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -17,9 +19,8 @@ import javax.validation.constraints.Pattern;
 @IdClass(ChitietPTLId.class)
 public class ChitietPTL implements Serializable {
 	@Id
-	@Column(name = "MAPTL", length = 5)
-	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String maptl;
+	@Column(name = "MAPTL")
+	private int maptl;
 	
 	@Id
 	@Column(name = "MATB", nullable = false)
@@ -31,15 +32,12 @@ public class ChitietPTL implements Serializable {
 	public ChitietPTL() {
 		super();
 	}
-
-	public String getMaptl() {
+	public int getMaptl() {
 		return maptl;
 	}
-
-	public void setMaptl(String maptl) {
+	public void setMaptl(int maptl) {
 		this.maptl = maptl;
 	}
-
 	public int getMatb() {
 		return matb;
 	}

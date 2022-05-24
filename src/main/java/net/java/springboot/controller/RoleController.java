@@ -30,7 +30,7 @@ public class RoleController {
 	
 	//Get Role by ID
 	@GetMapping("/roles/{id}")
-	public ResponseEntity<Roles> getChucvuByRoleId(@PathVariable Integer id) {
+	public ResponseEntity<Roles> getChucvuByRoleId(@PathVariable String id) {
 		return ResponseEntity.ok(roleService.getRoleById(id));
 	}
 	

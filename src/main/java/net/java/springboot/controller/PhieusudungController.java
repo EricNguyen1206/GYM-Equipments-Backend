@@ -31,22 +31,23 @@ public class PhieusudungController {
 	}
 	
 	@GetMapping("/phieusudung/{id}")
-	public Phieusudung getById(@PathVariable String id) {
+	public Phieusudung getById(@PathVariable int id) {
 		return service.getById(id);
 	}
 	
 	@PostMapping("/phieusudung")
-	public Phieusudung create(@RequestBody Phieusudung psd) {
-		return service.create(psd);
+	public ResponseEntity<String> create(@RequestBody Phieusudung psd) {
+		String res = service.create(psd);
+		return ResponseEntity.ok().body(res);
 	}
 	
 	@PostMapping("/phieusudung/{id}")
-	public Phieusudung accept(@PathVariable String id) {
+	public Phieusudung accept(@PathVariable int id) {
 		return service.accept(id);
 	}
 	
 	@PutMapping("/phieusudung/{id}")
-	public ResponseEntity<String> rollbackEquipment(@PathVariable String id, @RequestBody Thietbi tb) {
+	public ResponseEntity<String> rollbackEquipment(@PathVariable int id, @RequestBody Thietbi tb) {
 		String res =  service.rollbackEquipment(id, tb.getId());
 		System.out.println("Check response: " + res);
 		return new ResponseEntity<>(res, HttpStatus.OK);

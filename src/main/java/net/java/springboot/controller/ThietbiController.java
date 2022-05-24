@@ -33,8 +33,8 @@ public class ThietbiController {
 	}
 	
 	@PutMapping("/thietbi/{id}")
-	public ResponseEntity<Thietbi> update(@PathVariable int id, @RequestBody int condition) {
-		Thietbi res = service.changeCondition(id, condition);
+	public ResponseEntity<Thietbi> update(@PathVariable int id, @RequestBody Thietbi tb) {
+		Thietbi res = service.changeCondition(id, tb);
 		return ResponseEntity.ok(res);
 	}
 }

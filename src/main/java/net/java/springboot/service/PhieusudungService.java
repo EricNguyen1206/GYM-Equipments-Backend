@@ -1,7 +1,6 @@
 package net.java.springboot.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import net.java.springboot.exception.ResourceNotFoundException;
 import net.java.springboot.model.ChitietPSD;
 import net.java.springboot.model.Phieusudung;
-import net.java.springboot.model.Taikhoan;
 import net.java.springboot.model.Thietbi;
 import net.java.springboot.repository.ChitietPSDRepository;
 import net.java.springboot.repository.PhieusudungRepository;
@@ -34,28 +32,23 @@ public class PhieusudungService {
 		return psdRepository.findAll();
 	}
 	
-	public Phieusudung getById(String id) throws ResourceNotFoundException {
+	public Phieusudung getById(int id) throws ResourceNotFoundException {
 		Phieusudung psdFound = psdRepository.findById(id)
 				.orElseThrow(()-> new ResourceNotFoundException("Không tìm thấy Phiếu nhập có mã:"+id));
 		return psdFound;
 	}
 	
-	public Phieusudung create(Phieusudung psd) throws ResourceNotFoundException, IllegalArgumentException {
-		Optional<Phieusudung> psdFound = psdRepository.findById(psd.getMapsd());
-		if(psdFound.isPresent()) {
-			throw new IllegalArgumentException("Mã phiếu nhập này đã tồn tại");
-		}
-//		SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
-//		Date date = new Date();
-		Phieusudung res = psdRepository.save(psd);
+	public String create(Phieusudung psd) throws ResourceNotFoundException, IllegalArgumentException {
+		int id = psdRepository.taoPhieuthanhly(psd.getMatknv());
 		List<ChitietPSD> chitietPsd = psd.getChitietPSD();
 		for(int i=0; i<chitietPsd.size(); ++i) {
+			chitietPsd.get(i).setMapsd(id);
 			chitietPsdRepository.save(chitietPsd.get(i));
 		}
-		return res;
+		return "Tạo phiếu sử dụng thành công!";
 	}
 	
-	public Phieusudung accept(String id) throws ResourceNotFoundException, IllegalArgumentException {
+	public Phieusudung accept(int id) throws ResourceNotFoundException, IllegalArgumentException {
 		Phieusudung psdFound = psdRepository.findById(id)
 				.orElseThrow(()-> new ResourceNotFoundException("Không tìm thấy Phiếu sử dụng có mã:"+id));
 		
@@ -63,7 +56,7 @@ public class PhieusudungService {
 		return res;
 	}
 	
-	public String rollbackEquipment(String mapsd, int matb) throws ResourceNotFoundException, IllegalArgumentException {
+	public String rollbackEquipment(int mapsd, int matb) throws ResourceNotFoundException, IllegalArgumentException {
 		Phieusudung psdFound = psdRepository.findById(mapsd)
 				.orElseThrow(()-> new ResourceNotFoundException("Không tìm thấy Phiếu sử dụng có mã:" + mapsd));
 		Thietbi tbFound = tbRepository.findById(matb)

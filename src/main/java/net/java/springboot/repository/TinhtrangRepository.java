@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 import net.java.springboot.model.TinhtrangTB;
 @Repository
-public interface TinhtrangRepository extends JpaRepository<TinhtrangTB, Integer> {
+public interface TinhtrangRepository extends JpaRepository<TinhtrangTB, String> {
 }

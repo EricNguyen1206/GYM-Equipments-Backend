@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -17,9 +19,8 @@ import javax.validation.constraints.Pattern;
 @IdClass(ChitietPNId.class)
 public class ChitietPN implements Serializable {
 	@Id
-	@Column(name = "MAPN", length = 5)
-	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le")
-	private String mapn;
+	@Column(name = "MAPN")
+	private int mapn;
 
 	@Id
 	@Column(name = "MALTB", length = 5)
@@ -36,29 +37,20 @@ public class ChitietPN implements Serializable {
 		super();
 	}
 
-	public ChitietPN(@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String mapn,
-			@Pattern(regexp = "[a-zA-Z0-9]*", message = "Ky tu khong hop le") String maltb, int soluong, double gia) {
-		super();
-		this.mapn = mapn;
-		this.maltb = maltb;
-		this.soluong = soluong;
-		this.gia = gia;
-	}
-
-	public String getMapn() {
+	public int getMapn() {
 		return mapn;
 	}
 
-	public void setMapn(String mapn) {
+	public void setMapn(int mapn) {
 		this.mapn = mapn;
 	}
 
-	public String getMatb() {
+	public String getMaltb() {
 		return maltb;
 	}
 
-	public void setMatb(String matb) {
-		this.maltb = matb;
+	public void setMaltb(String maltb) {
+		this.maltb = maltb;
 	}
 
 	public int getSoluong() {
@@ -75,5 +67,10 @@ public class ChitietPN implements Serializable {
 
 	public void setGia(double gia) {
 		this.gia = gia;
+	}
+
+	@Override
+	public String toString() {
+		return "ChitietPN [mapn=" + mapn + ", maltb=" + maltb + ", soluong=" + soluong + ", gia=" + gia + "]";
 	}
 }

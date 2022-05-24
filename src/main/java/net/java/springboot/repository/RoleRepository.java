@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import net.java.springboot.model.Roles;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Roles, Integer> {
+public interface RoleRepository extends JpaRepository<Roles, String> {
 	//find with Chucvu's name
 	//Role findByName(String name);
 }

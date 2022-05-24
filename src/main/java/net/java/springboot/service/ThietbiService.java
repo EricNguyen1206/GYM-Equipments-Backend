@@ -24,10 +24,10 @@ public class ThietbiService {
 		return tbFound;
 	}
 	
-	public Thietbi changeCondition(int id, int condition) throws ResourceNotFoundException {
+	public Thietbi changeCondition(int id, Thietbi tb) throws ResourceNotFoundException {
 		Thietbi tbFound = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy thiết bị mã:"+id));
-		tbFound.setTinhtrangTb(condition);
+		tbFound.setTinhtrangTb(tb.getTinhtrangTb());
 		repository.save(tbFound);
 		return tbFound;
 	}

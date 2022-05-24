@@ -30,7 +30,7 @@ public class Taikhoan {
 	private String makv;
 	
 	@Column(name = "IDROLE", nullable = false)
-	private int idrole = 3;
+	private String idrole;
 
 	public Taikhoan() {
 		super();
@@ -76,11 +76,11 @@ public class Taikhoan {
 		this.makv = makv;
 	}
 
-	public int getIdrole() {
+	public String getIdrole() {
 		return idrole;
 	}
 
-	public void setIdrole(int idrole) {
+	public void setIdrole(String idrole) {
 		this.idrole = idrole;
 	}
 

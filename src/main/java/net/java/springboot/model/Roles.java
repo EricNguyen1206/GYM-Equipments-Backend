@@ -2,8 +2,6 @@ package net.java.springboot.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,8 +9,8 @@ import javax.persistence.Table;
 @Table(name = "ROLES")
 public class Roles {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@Column(name = "id", length = 3, nullable = false)
+	private String id;
 
 	@Column(name = "name", unique = true, length = 20)
 	private String name;
@@ -24,10 +22,10 @@ public class Roles {
 		super();
 		this.name = name;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	public String getRole() {
