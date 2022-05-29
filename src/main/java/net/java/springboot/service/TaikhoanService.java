@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.java.springboot.repository.TaikhoanRepository;
+import net.java.springboot.encription.Encriptor;
 
 @Service
 public class TaikhoanService {
@@ -30,11 +31,19 @@ public class TaikhoanService {
 		return taikhoanRepository.save(tk);
 	}
 	
-	public Optional<Taikhoan> register(Taikhoan taikhoan) {
-		return taikhoanRepository.findById(taikhoan.getUsername());
+	public Taikhoan login(Taikhoan taikhoan) throws ResourceNotFoundException {
+		Taikhoan tkFound = taikhoanRepository.findById(taikhoan.getUsername()).orElseThrow(() -> new ResourceNotFoundException("Sai thông tin đăng nhập!"));
+		String hash = Encriptor.getMd5(tkFound.getMatkhau());
+		String pass = taikhoan.getMatkhau();
+		System.out.println("hash: "+hash);
+		System.out.println("pass: "+pass);
+		if(!hash.equalsIgnoreCase(pass)) {
+			throw new ResourceNotFoundException("Sai thông tin đăng nhập!");
+		}
+		return tkFound;
 	}
 	
-	public Taikhoan update(String id, Taikhoan newTaikhoan) {
+	public Taikhoan update(String id, Taikhoan newTaikhoan) throws ResourceNotFoundException {
 		System.out.println(newTaikhoan.toString());
 		Taikhoan taikhoanFound = taikhoanRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Lỗi: Không tìm thấy tài khoản với mã: "+ id));
@@ -42,7 +51,7 @@ public class TaikhoanService {
 		if(newTaikhoan.getUsername() != null && !id.equals(newTaikhoan.getUsername())) {
 			throw new IllegalArgumentException("Lỗi: Không chỉnh sửa mã tài khoản!");
 		}
-		if(!taikhoanFound.getManv().equals(newTaikhoan.getManv())) {
+		if(newTaikhoan.getManv()!=null && !taikhoanFound.getManv().equals(newTaikhoan.getManv())) {
 			throw new IllegalArgumentException("Lỗi: Không thay đổi nhân viên sở hữu tài khoản!");
 		}
 		taikhoanFound.setIdrole(newTaikhoan.getIdrole() != null ? newTaikhoan.getIdrole() : taikhoanFound.getIdrole());

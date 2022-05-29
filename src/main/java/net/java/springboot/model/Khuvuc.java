@@ -15,7 +15,8 @@ public class Khuvuc {
 	private String makv;
 	
 	@Column(name = "TENKV", length = 20, nullable = false)
-	@Pattern(regexp = "[a-zA-Z0-9\s]*", message = "Ten khu vuc khong hop le")
+	@Pattern(regexp = "[a-z0-9A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*"
+	, message = "Tên khu vực không hợp lệ!")
 	private String tenkv;
 	
 	@Column(name = "MATK", length = 20)

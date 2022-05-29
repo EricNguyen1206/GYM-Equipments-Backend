@@ -39,9 +39,9 @@ public class TaikhoanController {
 		return service.create(tk);
 	}
 	
-	@PostMapping("/register")
-	public Optional<Taikhoan> register(@RequestBody Taikhoan tk) {
-		return service.register(tk);
+	@PostMapping("/login")
+	public Taikhoan login(@RequestBody Taikhoan tk) {
+		return service.login(tk);
 	}
 	
 	@PutMapping("/taikhoan/{id}")

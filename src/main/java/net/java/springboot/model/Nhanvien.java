@@ -15,11 +15,11 @@ public class Nhanvien {
 	private String manv;
 	
 	@Column(name = "HO", length = 25, nullable = false)
-	@Pattern(regexp = "[a-zA-Z\s]*", message = "Ho khong hop le!")
+	@Pattern(regexp = "[a-z0-9A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*", message = "Ho khong hop le!")
 	private String ho;
 	
 	@Column(name = "TEN", length = 10, nullable = false)
-	@Pattern(regexp = "[a-zA-Z]*", message = "Ten khong hop le!")
+	@Pattern(regexp = "[a-z0-9A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*", message = "Ten khong hop le!")
 	private String ten;
 	
 	// Gioi tinh = true = 1 = nam, Gioi tinh = false = 0 = nu
